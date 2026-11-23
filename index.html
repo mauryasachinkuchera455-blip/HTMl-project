@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus ID Reissue Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">ID</span><span>Campus<span class="brand-light">Care</span><small>STUDENT ID SERVICES</small></span></a>
+    <nav><a href="#home">Home</a><a href="#apply">Apply</a><a href="#track">Track Request</a><a href="#admin">Admin</a></nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰</button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <span class="eyebrow">STUDENT IDENTITY CARD SERVICES</span>
+        <h1>Your campus identity.<br><em>Reissued with ease.</em></h1>
+        <p>Apply for a replacement student ID card, submit the required details, and follow your application status from one simple portal.</p>
+        <div class="hero-actions"><a class="btn primary" href="#apply">Apply for ID card <span>→</span></a><a class="btn ghost" href="#track">Track application</a></div>
+        <div class="hero-note"><span class="dot"></span> Simple • Transparent • Student-friendly</div>
+      </div>
+      <div class="id-visual" aria-label="Illustration of a student identity card">
+        <div class="card-glow"></div><div class="id-card">
+          <div class="id-head"><span class="mini-logo">U</span><span>UNIVERSITY CAMPUS<small>STUDENT IDENTITY CARD</small></span></div>
+          <div class="id-body"><div class="avatar">👤</div><div><b>STUDENT NAME</b><small>Student ID: 000000</small><small>Programme: Your Course</small><small>Valid: Academic Session</small></div></div>
+          <div class="id-foot"><span>STUDENT</span><span>•••• •••• ••••</span></div>
+        </div>
+        <div class="floating-tag">✓ Online application</div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div><strong>01</strong><span>Submit details</span></div><div><strong>02</strong><span>Upload documents</span></div><div><strong>03</strong><span>Track progress</span></div><div><strong>04</strong><span>Collect your ID</span></div>
+    </section>
+
+    <section class="section" id="apply">
+      <div class="section-heading"><span class="eyebrow">START HERE</span><h2>Replacement ID application</h2><p>Complete the form carefully. Fields marked * are required.</p></div>
+      <form id="applicationForm" class="form-card">
+        <div class="form-section-title"><span>01</span><div><b>Student information</b><small>Enter your university and contact details</small></div></div>
+        <div class="form-grid">
+          <label>Full name *<input name="name" required placeholder="Enter your full name"></label>
+          <label>Registration number *<input name="reg" required placeholder="e.g. 12345678"></label>
+          <label>Course / Programme *<input name="course" required placeholder="Enter your course"></label>
+          <label>Year / Semester<select name="year" required><option value="">Select year</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option><option>Other</option></select></label>
+          <label>Email address *<input type="email" name="email" required placeholder="name@example.com"></label>
+          <label>Mobile number *<input name="phone" required inputmode="tel" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number"></label>
+        </div>
+        <div class="form-section-title"><span>02</span><div><b>Replacement details</b><small>Tell us why you need a new identity card</small></div></div>
+        <div class="form-grid">
+          <label>Reason for replacement *<select name="reason" id="reason" required><option value="">Choose a reason</option><option>Lost</option><option>Damaged</option><option>Stolen</option><option>Details correction</option><option>Other</option></select></label>
+          <label>Preferred contact method<select name="contact"><option>Email</option><option>Mobile</option></select></label>
+          <label class="full">Explain the issue *<textarea name="details" rows="3" required placeholder="Briefly explain what happened to your current ID card"></textarea></label>
+        </div>
+        <div class="form-section-title"><span>03</span><div><b>Document checklist</b><small>Tick the documents you are ready to provide</small></div></div>
+        <div class="checklist">
+          <label><input type="checkbox" name="docs" value="Student details / registration proof"> Student details / registration proof</label>
+          <label><input type="checkbox" name="docs" value="Recent passport-size photograph"> Recent passport-size photograph</label>
+          <label><input type="checkbox" name="docs" value="Damaged ID card (if available)"> Damaged ID card (if available)</label>
+          <label><input type="checkbox" name="docs" value="Loss report / declaration (if applicable)"> Loss report / declaration (if applicable)</label>
+        </div>
+        <p class="notice">Demo project: this form stores applications in this browser only. It does not upload documents to a university server or process payments.</p>
+        <button class="btn primary submit-btn" type="submit">Submit application <span>→</span></button>
+        <div id="formMessage" class="message" role="status"></div>
+      </form>
+    </section>
+
+    <section class="section track-section" id="track">
+      <div class="section-heading"><span class="eyebrow">APPLICATION UPDATES</span><h2>Track your request</h2><p>Enter the application ID shown after you submit the form.</p></div>
+      <form id="trackForm" class="track-form"><input id="trackId" placeholder="e.g. IDR-123456" required><button class="btn dark" type="submit">Find application</button></form>
+      <div id="trackResult" class="track-result"></div>
+    </section>
+
+    <section class="section admin-section" id="admin">
+      <div class="section-heading"><span class="eyebrow">DEMO ADMIN AREA</span><h2>Application management</h2><p>For project demonstration: review requests and update their status.</p></div>
+      <div class="admin-tools"><span class="admin-label">ADMIN DEMO VIEW</span><button class="btn outline" id="refreshAdmin">Refresh list ↻</button></div>
+      <div class="table-wrap"><table><thead><tr><th>Application ID</th><th>Student</th><th>Reason</th><th>Date</th><th>Status</th><th>Update</th></tr></thead><tbody id="adminRows"><tr><td colspan="6" class="empty">No applications submitted yet.</td></tr></tbody></table></div>
+      <p class="notice">Admin controls are intentionally open for classroom demonstration. A real university deployment must add secure authentication, server-side storage and role permissions.</p>
+    </section>
+  </main>
+
+  <footer><div class="footer-brand">CampusCare <span>· Student ID Services</span></div><p>Academic project prototype · Group 17 — Coder Group</p><p class="team">Sachin&nbsp; • &nbsp;Sahid&nbsp; • &nbsp;Shubham</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>
